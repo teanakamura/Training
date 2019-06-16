@@ -1,0 +1,121 @@
+<% if @user.name == nil %>
+  <h2>Log in</h2>
+
+  <script>
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import request from 'superagent';
+
+  class TextFormElement extends React.Component {
+    constructor(props){
+      super(props);
+      this.state = {
+        content: props.first_state
+      };
+      this.onTextAreaChange = this.onTextAreaChange.bind(this);
+    }
+    onTextAreaChange(event){
+      this.setState({ content: event.target.value });
+    }
+    render() {
+      return (
+        <textarea
+          value={this.state.content}
+          onChange={this.onTextAreaChange}/>
+      );
+    }
+  }
+
+
+    class forms extends React.Componet{
+      render(){
+        return(
+          <form_for :user, url: send_to_api_path do |f| %>
+            <ul>
+              Email<br>
+              <%= f.text_field :email %>
+            </ul>
+            <ul>
+              Password<br>
+              <%= f.password_field :password  %>
+            </ul>
+            <p>
+              <%= f.submit %>
+            </p>
+          <% end %>
+        );
+      }
+    }
+  class Form2 extends React.Component {
+
+    constructor(props){
+      super(props);
+      this.state = {
+        first_state1: "input email adress here",
+        first_state2: "input password"
+      };
+      this.onSubmit = this.onSubmit.bind(this);
+      this.onTextAreaChange = this.onTextAreaChange.bind(this);
+    }
+
+    onSubmit(event){
+      event.preventDefault();
+      console.log("onSubmit");
+      console.log(this.state);
+    }
+
+    onTextAreaChange(event){
+      this.setState({ event.target.name: event.target.value });
+    }
+
+    render() {
+      return (
+        <form onSubmit={this.onSubmit}>
+          <textarea
+            value={this.state.first_state1}
+            name="content1"
+            onChange={this.onTextAreaChange}/>
+          <textarea
+            value={this.state.first_state2}
+            name="content2"
+            onChange={this.onTextAreaChange}/>
+          <div>
+            <button type="submit">OK</button>
+          </div>
+        </form>
+      );
+    }
+  }
+
+
+    class forms extends React.Componet{
+      render(){
+        return(
+          <form_for :user, url: send_to_api_path do |f| %>
+            <ul>
+              Email<br>
+              <%= f.text_field :email %>
+            </ul>
+            <ul>
+              Password<br>
+              <%= f.password_field :password  %>
+            </ul>
+            <p>
+              <%= f.submit %>
+            </p>
+          <% end %>
+        );
+      }
+    }
+
+    class counter
+    class index
+
+    ReactDOM.render(
+      <forms/>,
+      document.getElementById('login')
+    )
+  </script>
+<% else %>
+  <%= @user.name %>
+<% end %>

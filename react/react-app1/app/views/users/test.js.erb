@@ -1,0 +1,22 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import request from 'superagent'
+
+class forms extends React.Componet{
+  render(){
+    <h2>Log in</h2>
+
+    <%= form_for :user, url: check_user_path do |f| %>
+      <ul>
+        Email<br>
+        <%= f.text_field :email %>
+      </ul>
+      <ul>
+        Password<br>
+        <%= f.text_field :pass  %>
+      </ul>
+      <p>
+        <%= f.submit %>
+      </p>
+  }
+}

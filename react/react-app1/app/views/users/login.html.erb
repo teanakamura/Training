@@ -1,0 +1,19 @@
+<% if @user.name == nil %>
+  <h2>Log in</h2>
+
+  <%= form_for :user, url: send_to_api_with_post_path do |f| %>
+    <ul>
+      Email<br>
+      <%= f.text_field :email %>
+    </ul>
+    <ul>
+      Password<br>
+      <%= f.password_field :password  %>
+    </ul>
+    <p>
+      <%= f.submit 'submit' %>
+    </p>
+  <% end %>
+<% else %>
+  <%= @user.name %>
+<% end %>
